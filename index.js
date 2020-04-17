@@ -60,7 +60,7 @@ console.log(sayGoodbye('Andy'))
 function temperatureCtoF(temperaturec) {
   /* code here */
   let converter = temperaturec * (9/5)
-  return Math.floor(converter + 32)
+  return Math.round(converter + 32)
 }
 console.log(temperatureCtoF(24))
 
@@ -84,15 +84,14 @@ console.log(temperatureCtoF(24))
 function temperatureInF(temp, unit) {
   /* code here */
   if(unit === 'C'){
-    var C = temperatureCtoF(temp)
-    console.log(C)
+    return  temperatureCtoF(temp) + 'F'
   }else if (unit === 'F'){
-    var F = console.log(temp, unit)
+    return temp + unit;
   }
 
 }
 
-console.log(temperatureInF(24, 'C'))
+console.log(temperatureInF(40,'C'))
 /**
  * ### Challenge `makePersonObject`
  * 
@@ -131,10 +130,11 @@ console.log(makePersonObject('5', 'Leia', 'Leia@leia.com'))
 */
 
 
- function getName(name, id, email) {
-return `Hello, my name is ${name}`
+ function getName(name1) {
+   
+return `my name is ${name1.name}`
 }
-console.log (getName('Leia', 5, 'leila@leila.leila'));
+
 
 
 /**
@@ -152,9 +152,12 @@ console.log (getName('Leia', 5, 'leila@leila.leila'));
  * passing in [ 'orange', 'grape', 'apple', 'banana', 'mango' ] as the argument,
  * the returned value should be: 2.
 */
-function appleIndex(/* code here */) {
-  /* code here */
+function appleIndex(fruits) {
+
+  return fruits.indexOf('apple')
+
 }
+console.log (appleIndex([ 'orange', 'grape', 'apple', 'banana', 'mango']))
 
 /**
  * ### Challenge `isItAnApple`
@@ -171,10 +174,20 @@ function appleIndex(/* code here */) {
  * passing in [ 'orange', 'apple', 'banana', 'apples', 'apple', 'mango' ] as the argument,
  * the returned value should be: [ false, true, false, false, true, false ].
 */
-function isItAnApple(/* code here */) {
-  /* code here */
-}
 
+function isItAnApple(fruits) {
+  /* code here */
+  for(let i=0; i< fruits.length; i++) {
+  if (fruits[i] === 'apple'){
+    fruits[i] = true;
+   }else{
+    fruits[i] = false;
+  }
+
+}
+  return fruits
+}
+console.log (isItAnApple([ 'orange', 'apple', 'banana', 'apples', 'apple', 'mango']))
 
 
 /*
@@ -229,9 +242,27 @@ function get3rdCar(inventory) {
  * For example, if getCarInfoByIndex is invoked with the inventory and the number 0,
  * it will return `This is a Lincoln Navigator`.
 */
-function getCarInfoByIndex(inventory, index) {
-  /* code here */
+let cars = [  { id: 1, car_make: "Lincoln", car_model: "Navigator", car_year: 2009 },
+{ id: 2, car_make: "Mazda", car_model: "Miata MX-5", car_year: 2001 },
+{ id: 3, car_make: "Land Rover", car_model: "Defender Ice Edition", car_year: 2010 },
+{ id: 4, car_make: "Honda", car_model: "Accord", car_year: 1983 },
+{ id: 5, car_make: "Mitsubishi", car_model: "Galant", car_year: 1990 },
+{ id: 6, car_make: "Honda", car_model: "Accord", car_year: 1995 },
+{ id: 7, car_make: "Smart", car_model: "Fortwo", car_year: 2009 },
+{ id: 8, car_make: "Audi", car_model: "4000CS Quattro", car_year: 1987 },
+{ id: 9, car_make: "Ford", car_model: "Windstar", car_year: 1996 },
+{ id: 10, car_make: "Mercedes-Benz", car_model: "E-Class", car_year: 2000 },
+{ id: 11, car_make: "Infiniti", car_model: "G35", car_year: 2004 },
+{ id: 12, car_make: "Lotus", car_model: "Esprit", car_year: 2004 },
+{ id: 13, car_make: "Chevrolet", car_model: "Cavalier", car_year: 1997 },
+{ id: 14, car_make: "Dodge", car_model: "Ram Van 1500", car_year: 1999 }]
+
+ function getCarInfoByIndex(inventory, index) {
+   
+  const car = inventory[index]
+  return `this is a ${car.car_make} ${car.car_model}`
 }
+ console.log(getCarInfoByIndex(cars, 0))
 
 /**
  * ### Challenge `getLastCarInfo`
@@ -244,9 +275,27 @@ function getCarInfoByIndex(inventory, index) {
  * For example, if getLastCarInfo is invoked passing the inventory inside /data/inventory.js,
  * it will return `This is a Lincoln Town Car`.
 */
-function getLastCarInfo(/* code here */) {
+let years = [  { id: 1, car_make: "Lincoln", car_model: "Navigator", car_year: 2009 },
+{ id: 2, car_make: "Mazda", car_model: "Miata MX-5", car_year: 2001 },
+{ id: 3, car_make: "Land Rover", car_model: "Defender Ice Edition", car_year: 2010 },
+{ id: 4, car_make: "Honda", car_model: "Accord", car_year: 1983 },
+{ id: 5, car_make: "Mitsubishi", car_model: "Galant", car_year: 1990 },
+{ id: 6, car_make: "Honda", car_model: "Accord", car_year: 1995 },
+{ id: 7, car_make: "Smart", car_model: "Fortwo", car_year: 2009 },
+{ id: 8, car_make: "Audi", car_model: "4000CS Quattro", car_year: 1987 },
+{ id: 9, car_make: "Ford", car_model: "Windstar", car_year: 1996 },
+{ id: 10, car_make: "Mercedes-Benz", car_model: "E-Class", car_year: 2000 },
+{ id: 11, car_make: "Infiniti", car_model: "G35", car_year: 2004 },
+{ id: 12, car_make: "Lotus", car_model: "Esprit", car_year: 2004 },
+{ id: 13, car_make: "Chevrolet", car_model: "Cavalier", car_year: 1997 },
+{ id: 14, car_make: "Dodge", car_model: "Ram Van 1500", car_year: 1999 }]
+
+function getLastCarInfo(inventory) {
+const year = inventory
+return `this is a ${year.car_make} ${year.car_model}`
   /* code here */
 }
+console.log(getLastCarInfo(years))
 
 /**
  * ### Challenge `getModelYears`
@@ -257,7 +306,7 @@ function getLastCarInfo(/* code here */) {
  *     (1) an array which is an inventory of cars like the one inside /data/inventory.js.
  * getModelYears returns an array containing all the 'car_year's in the inventory.
 */
-function getModelYears(/* code here */) {
+function getModelYears() {
   /* code here */
 }
 
